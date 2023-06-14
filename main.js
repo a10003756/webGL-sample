@@ -1,10 +1,8 @@
 import * as THREE from './build/three.module.js'
-//シーン作成
-let scene, camera, render;
 
+let scene, camera, render;
 //シーン作成
 scene = new THREE.Scene();
-
 //カメラ作成
 camera = new THREE.PerspectiveCamera( 
   50,
@@ -44,15 +42,15 @@ let pointLightHelper = new THREE.PointLightHelper(pointLight, 30);
 scene.add(pointLightHelper);
 
 function animate() {
+  //ポイント光源を動かす処理
   pointLight.position.set(
-    200 * Math.sin(Date.now() / 500),
-    200 * Math.sin(Date.now() / 1000),
+    200 * Math.sin(Date.now() / 500),//x軸
+    200 * Math.sin(Date.now() / 1000),//y軸
     200 * Math.cos(Date.now() / 500)
   )
   render.render(scene, camera);
-
+  //ブラウザのAPIを使用して、永久アニメーション
   requestAnimationFrame(animate);
 }
-console.log(Date.now());
 animate();
 
